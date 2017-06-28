@@ -170,10 +170,21 @@ var work = {
             ]
         },
         {
+        	"employer": "self",
+        	"location": "Abu Dhabi, UAE",
+        	"title": "tutor",
+        	"years": "2015",
+        	"description:": [
+        		"stuff",
+        		"stuff",
+        		"more stuff"
+        	]
+        },
+        {
             "employer": "Baker Hughes",
             "location": "Abu Dhabi, UAE",
             "title": "Geoscientist",
-            "years": "2014 - 2016",
+            "years": "2014 - 2015",
             "description": [
 	            "Meticulously recorded & analyzed detailed oil & gas data",
 	            "Delivered final product presentations, quality & data reports for various stakeholder & client geoscience projects",
