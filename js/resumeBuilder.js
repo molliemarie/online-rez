@@ -125,7 +125,7 @@ education.display = function() {
 		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[schoolInfo].major);
 		$(".education-entry:last").append(formattedMajor);
 	}
-	$("#education").append(HTMLonlineClasses);
+	$("#education").append(HTMLprofessionalDevelopment);
 	for (onlineCourse in education.onlineCourses) {
 		$("#education").append(HTMLschoolStart);
 
@@ -170,15 +170,15 @@ var work = {
             ]
         },
         {
-        	"employer": "self",
-        	"location": "Abu Dhabi, UAE",
-        	"title": "tutor",
-        	"years": "2015",
-        	"description:": [
-        		"stuff",
-        		"stuff",
-        		"more stuff"
-        	]
+            "employer": "Self-employed",
+            "location": "Abu Dhabi, UAE",
+            "title": "Algebra / SAT tutor",
+            "years": "2015",
+            "description": [
+            	"stuff", 
+            	"stuff", 
+            	"more stuff"
+            ]
         },
         {
             "employer": "Baker Hughes",
