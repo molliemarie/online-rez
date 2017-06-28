@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+ 
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+ 
+.node {
+  font: 10px sans-serif;
+}
+ 
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+ 
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+ 
+var diameter = 960;
+ 
+var tree = d3.layout.tree()
+    .size([360, diameter / 2 - 120])
+    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+ 
+var diagonal = d3.svg.diagonal.radial()
+    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+ 
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter - 150)
+  .append("g")
+    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+ 
+var root = {
+  "name": "Courses",
+  "children": [
+  {
+    "name": "Computer Science",
+    "children": [
+    {"name":"Javascript"},
+    {"name":"HTML & CSS"},
+    {"name":"jQuery"},
+    {"name":"Git & Github"},
+    {"name":"Introduction to Computer Applications"}
+    ]
+  },
+  {
+    "name": "Mathematics",
+    "children": [
+    {"name":"College Algebra"},
+    {"name":"Plane Trigonometry"},
+    {"name":"Calculus 1"},
+    {"name":"Calculus 2"},
+    {"name":"Spatial Statistics and Analysis"},
+    {"name":"Numerical and Symbolic Methods of Computation"},
+    {"name":"Multivariable Calculus"},
+    {"name":"Differential Equations"},
+    {"name":"Symbolic Logic"},
+    {"name":"History of Mathematics"},
+    {"name":"Concepts of Mathematics"},
+    {"name":"Probabililty and Statistics"},
+    {"name":"Applied Linear Algebra"},
+    {"name":"Algebraic Structures"},
+    {"name":"Applied Modern Algebra"},
+    {"name":"Real Analysis"},
+    ]
+  },
+  {
+    "name":"Physics",
+    "children": [
+    {"name":"Conceptual Physics"},
+    {"name":"Physics I"},
+    {"name":"Physics II"}
+    ]
+  },
+  {
+    "name":"Chemistry",
+    "children": [
+    {"name":"Chemistry I"},
+    {"name":"Chemistry II"},
+    {"name":"Organic Chemistry I"},
+    {"name":"Organic Chemistry II"}
+    ]
+  },
+    {
+    "name":"Astronomy",
+    "children": [
+    {"name":"Descriptive Astronomy"},
+    ]
+  },
+  {
+    "name":"Biology",
+    "children": [
+    {"name":"Biology I"},
+    {"name":"Biology II"},
+    ]
+  },
+  {
+    "name":"English",
+    "children": [
+    {"name":"Composition/Rhetoric I"},
+    {"name":"Composition/Rhetoric II"},
+    {
+      "name":"TESOL",
+      "children":[
+      {"name":"Teaching Practice"},
+      {"name":"Language Analysis"},
+      {"name":"Language Skills"},
+      {"name":"Teaching Methodology"},
+      {"name":"Student Needs Analysis"},
+      {"name":"Technology in Teaching"},
+      {"name":"Business English"},
+      {"name":"Teaching Children"}
+      ]
+    }
+    ]
+  },
+  {
+    "name":"Geology",
+    "children": [
+    {"name":"Planet Earth"},
+    {"name":"Earth through Time"},
+    {"name":"Geomorphology"},
+    {"name":"Paleontology"},
+    {"name":"Petrology"},
+    {"name":"Minerology"},
+    {"name":"Structural Geology"},
+    {"name":"Environmental Geochemistry"},
+    {"name":"Geographic Information Systems"},
+    {"name":"Stratigraphy and Sedimentation"},
+    {"name":"Environmental Geology"},
+    {"name":"Physical Hydrogeology"},
+    {"name":"Soil Physics"},
+    {"name":"Geotechnical Engineering"},
+    ]
+  }
+  ]
+};
+
+
+  var nodes = tree.nodes(root),
+      links = tree.links(nodes);
+ 
+  var link = svg.selectAll(".link")
+      .data(links)
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", diagonal);
+ 
+  var node = svg.selectAll(".node")
+      .data(nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+ 
+  node.append("circle")
+      .attr("r", 4.5);
+ 
+  node.append("text")
+      .attr("dy", ".31em")
+      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+     .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+     .text(function(d) { return d.name; });
+ 
+d3.select(self.frameElement).style("height", diameter - 150 + "px");
+ 
+</script>
