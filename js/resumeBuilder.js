@@ -275,12 +275,6 @@ var projects = {
     	"dates": 2016,
     	"images": {}
 
-    },
-    {
-        "title": "Interactive Resume",
-        "description": "tktk: description",
-    	"dates":"2015-Present",
-    	"images": ["images/project2_1.png","images/project2_2.png"]
     }]
 }
 
